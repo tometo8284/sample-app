@@ -1,6 +1,8 @@
 class List < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  has_many :list_comments, dependent: :destroy
+  
   
   validates :title, presence: true
   validates :body, presence: true
