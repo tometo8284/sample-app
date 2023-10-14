@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   devise_for :users
   root to: "homes#top"
-  resources :lists, only: [:new, :create, :index, :show, :edit, :destroy] do
+  resources :lists, only: [:new, :create, :index, :show, :edit, :destroy, :update] do
     resources :list_comments, only: [:create, :destroy]
   end
   resources :users, only: [:show, :edit, :update]
