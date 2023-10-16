@@ -3,8 +3,14 @@ class ListCommentsController < ApplicationController
     list = List.find(params[:list_id])
     comment = current_user.list_comments.new(list_comment_params)
     comment.list_id = list.id
-    comment.save
-    redirect_to list_path(list)
+    if comment.save
+      redirect_to list_path(list)
+    end
+  end
+  
+  def destroy
+    ListComment.find(params[:id]).destroy
+    redirect_to list_path(params[:list_id])
   end
   
   private

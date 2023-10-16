@@ -10,10 +10,26 @@
 <div>
   <p>コメント件数：<%= @list.list_comments.count %></p>
   <% @list.list_comments.each do |list_comment| %>
-    <p><%= image_tag list_comment.user.get_profile_image(100,100) %></p>
+    <p><%= image_tag list_comment.user.get_profile_image, size: "50x50" %></p>
     <%= list_comment.user.name %>
     <%= list_comment.created_at.strftime('%Y/%m/%d') %>
     <%= list_comment.comment %>
+    <% if list_comment.user == current_user %>
+      <%= button_to "削除", list_list_comment_path(list_comment.list, list_comment), :method => :delete %>
+    <% end %>
+  <% end %>
+  <% if @list.fav_by?(current_user) %>
+    <p>
+      <%= button_to list_favorites_path(@list), :method => :delete do %>
+        ♥<%= @list.favorites.count %> 
+      <% end %>
+    </p>
+    <% else %>
+    <p>
+      <%= button_to list_favorites_path(@list), :method => :post do %>
+        ♡<%= @list.favorites.count %>
+      <% end %>
+    </p>
   <% end %>
 </div>
 <div>

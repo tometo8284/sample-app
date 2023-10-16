@@ -2,10 +2,15 @@ class List < ApplicationRecord
   has_one_attached :image
   belongs_to :user
   has_many :list_comments, dependent: :destroy
+  has_many :favorites, dependent: :destroy
   
   
   validates :title, presence: true
   validates :body, presence: true
+  
+  def fav_by?(user)
+    favorites.exists?(user_id: user.id)
+  end
   
   def get_image
     unless image.attached?
