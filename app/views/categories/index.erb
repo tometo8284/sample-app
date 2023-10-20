@@ -1,0 +1,6 @@
+<h2>カテゴリ一覧</h2>
+<%= form_with model: @category do |f| %>
+<p>ジャンル名</p>
+  <%= f.text_field :name %>
+  <%= f.submit '登録' %>
+<% end %>

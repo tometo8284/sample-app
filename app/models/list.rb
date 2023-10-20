@@ -1,6 +1,7 @@
 class List < ApplicationRecord
   has_one_attached :image
   belongs_to :user
+  belongs_to :category
   has_many :list_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
   
