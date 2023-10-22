@@ -4,3 +4,8 @@
   <%= f.text_field :name %>
   <%= f.submit '登録' %>
 <% end %>
+
+<% @categories.each do |category| %>
+  <p><%= category.name %></p>
+  <p><%= link_to "編集", edit_category_path(category.id) %></p>
+<% end %>

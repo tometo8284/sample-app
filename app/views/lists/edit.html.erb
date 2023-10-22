@@ -4,8 +4,10 @@
   <%= f.text_field :title %>
   <h4>本文</h4>
   <%= f.text_area :body %>
+  <h4>カテゴリ</h4>
+   <label>カテゴリ</label>
+  <%= f.collection_select :category_id, Category.all, :id, :name %>
   <h4>画像</h4>
   <%= f.file_field :image %>
-  
   <%= f.submit "保存" %>
 <% end %>

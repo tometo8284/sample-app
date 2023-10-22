@@ -1,5 +1,6 @@
 <p><%= @list.title %></p>
 <p><%= @list.body %></p>
+<p><%= @list.category.name %></p>
 <p><%= image_tag @list.get_image, size: "200x200" %> </p>
 
 <%= button_to '削除', list_path(@list.id), :method => :delete %>
