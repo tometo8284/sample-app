@@ -14,10 +14,15 @@ class ListsController < ApplicationController
   end
 
   def index
-    @lists = List.all.order("created_at desc")
+    if params[:title].present?
+       @lists = List.where('title LIKE(?)', "%#{params[:title]}")
+    else
+      @lists = List.all.order("created_at desc")
+    end
   end
 
   def show
+    @categories = Category.all
     @list = List.find(params[:id])
     @list_comment = ListComment.new
   end
@@ -40,6 +45,13 @@ class ListsController < ApplicationController
     list.destroy
     redirect_to lists_path
   end  
+  
+  def search
+    @categories = Category.all
+    @category = Category.find(params[:category_id])
+    @lists = @category.lists
+    render "index"
+  end
   
   private
     def list_params

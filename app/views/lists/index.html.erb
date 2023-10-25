@@ -1,4 +1,8 @@
 <h1>投稿一覧</h1>
+<%= form_with url: lists_path, method: :get do |f| %>
+  <%= f.text_field :title %>
+  <%= f.submit '検索' %>
+<% end %>
 <% @lists.each do |list| %>
   <p>タイトル</p>
   <%= link_to list_path(list.id) do %>
