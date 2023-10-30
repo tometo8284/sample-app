@@ -14,15 +14,15 @@ class ListsController < ApplicationController
   end
 
   def index
+    @categories = Category.all
     if params[:title].present?
        @lists = List.where('title LIKE(?)', "%#{params[:title]}")
     else
-      @lists = List.all.order("created_at desc")
+      @lists = List.page(params[:page]).order("created_at desc")
     end
   end
 
   def show
-    @categories = Category.all
     @list = List.find(params[:id])
     @list_comment = ListComment.new
   end
