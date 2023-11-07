@@ -3,7 +3,7 @@ class ContactMailer < ApplicationMailer
     @contact = contact
     mail(
       to: ENV['TOMAIL'],
-      subject: 'お問い合わせ通知'
+      subject: 'お問い合わせ通知' + @contact.subject_i18n
     )
   end
 end

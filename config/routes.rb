@@ -9,5 +9,8 @@ Rails.application.routes.draw do
   end
   resources :users, only: [:show, :edit, :update]
   resources :categories, only: [:index, :create, :edit, :update]
+  resources :contacts, only: [:new, :create]
+  post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+  post 'contacts/back', to: 'contacts#back', as: 'back'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
