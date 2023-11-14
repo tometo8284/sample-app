@@ -2,3 +2,5 @@ ja:
   enums:
     contact:
       subject: 
+        inquiry: "お問い合わせ"
+        report: "報告"
