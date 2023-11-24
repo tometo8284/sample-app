@@ -6,7 +6,7 @@
   <% end %>
 </div>
 
-
+<h3><%= @user.name %>さんの投稿</h3>
 <% @lists.each do |list| %>
 <div>
   <%= link_to list_path(list.id) do %>
