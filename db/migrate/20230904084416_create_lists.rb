@@ -5,6 +5,8 @@ class CreateLists < ActiveRecord::Migration[6.1]
       t.integer :category_id
       t.string :title 
       t.string :body
+      t.integer :price, null: false
+      t.boolean :is_deleted, null: false, default: false
       t.timestamps
     end
   end
