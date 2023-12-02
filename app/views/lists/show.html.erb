@@ -1,12 +1,19 @@
 <p><%= @list.title %></p>
 <p><%= @list.body %></p>
 <p><%= @list.category.name %></p>
+<p><%= @list.price %>円</p>
 <p><%= image_tag @list.get_image, size: "200x200" %> </p>
-
 <%= button_to '削除', list_path(@list.id), :method => :delete %>
 <br />
 <%= link_to "編集画面へ", edit_list_path(@list.id) %>
 
+<%= form_with model: @cart, url: carts_path method: :post do |f| %>
+  <% if @item.is_deleted == false %>
+    <%= f.hidden_field :list_id, :value => @list.id %>
+    <%= f.select :amount, *[1..10] %>
+    <%= f.submit 'カートに入れる' %>
+  <% end %>
+<% end %>
 
 <div>
   <p>コメント件数：<%= @list.list_comments.count %></p>
