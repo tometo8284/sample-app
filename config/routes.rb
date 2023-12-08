@@ -7,11 +7,12 @@ Rails.application.routes.draw do
     resources :list_comments, only: [:create, :destroy]
     resource :favorites, only: [:create, :destroy]
   end
+  resources :carts, only: [:index, :create, :update]
   resources :users, only: [:show, :edit, :update]
   resources :categories, only: [:index, :create, :edit, :update]
   resources :contacts, only: [:new, :create]
   post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
   post 'contacts/back', to: 'contacts#back', as: 'back'
-  resources :carts, only: [:index, :create, :update]
+  
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

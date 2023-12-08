@@ -4,7 +4,7 @@ class List < ApplicationRecord
   belongs_to :category
   has_many :list_comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
-  has_many :carts, depwndent: :destroy
+  has_many :carts, dependent: :destroy
   has_many :order_details 
   
   
