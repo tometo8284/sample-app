@@ -1,0 +1,16 @@
+<% add_up = 0 %>
+<h2>ショッピングカート</h2>
+<table>
+  <thead>
+    <th>商品名</th>
+    <th>単価</th>
+    <th>個数</th>
+    <th>小計</th>
+  </thead>
+  <tbody>
+    <% @carts.each do |cart| %>
+    <td><%= image_tag cart.list.get_image, size: "100x100" %><br />
+        <%= cart.list.body %>
+    </td>
+  </tbody>
+</table>

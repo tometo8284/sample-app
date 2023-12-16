@@ -25,6 +25,7 @@ class ListsController < ApplicationController
   def show
     @list = List.find(params[:id])
     @list_comment = ListComment.new
+    @cart = Cart.new
   end
 
   def edit

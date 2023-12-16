@@ -6,7 +6,7 @@ class CartsController < ApplicationController
   def create
     @cart = current_user.carts.new(cart_params)
     if current_user.carts.find_by(list_id: params[:cart][:list_id]).present?
-      cart = current_user.carts..find_by(list_id: params[:cart][:list_id])
+      cart = current_user.carts.find_by(list_id: params[:cart][:list_id])
       cart.amount += params[:cart][:amount].to_i
       cart.update(amount: cart.amount)
       redirect_to carts_path
